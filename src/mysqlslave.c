@@ -129,6 +129,11 @@ int main()
         fprintf(stderr, "Can't connect to server: %s\n", drizzle_error(d));
         return -1;
     }
+
+
+    fprintf(stderr, "%s@%s:%d (%s)\n", drizzle_user(d), drizzle_host(d),
+        drizzle_port(d), drizzle_db(d));
+
     drizzle_return_t ret;
     drizzle_result_st *result = drizzle_query(d, "SHOW BINARY LOGS", 0, &ret);
     drizzle_row_t row;
@@ -137,6 +142,7 @@ int main()
 
     int next_pos = 0;
 
+    fprintf(stderr, "Found %ld binlog files\n", drizzle_result_row_count(result));
     while ((row = drizzle_row_next(result)))
     {
         for (int i = 0; i < num_fields; i++)
