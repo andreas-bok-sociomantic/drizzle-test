@@ -116,7 +116,7 @@ void binlog_event(drizzle_binlog_event_st *event, void *context)
 int main()
 {
     //drizzle_st* d = drizzle_create("localhost", 3306, "nemanjaboric", "", "sonar_metadata", NULL);
-    drizzle_st* d = drizzle_create("localhost", 3306, "ocean_user", "", "ocean_test", NULL);
+    drizzle_st* d = drizzle_create("localhost", 3306, "ocean_user", "", "mydb", NULL);
 
     if (!d)
     {
